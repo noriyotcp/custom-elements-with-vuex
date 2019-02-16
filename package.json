@@ -2,7 +2,8 @@
   "scripts": {
     "dev": "webpack-dev-server",
     "build": "webpack -p",
-    "lint": "tslint -p tsconfig.json"
+    "lint": "tslint -p tsconfig.json",
+    "tslint-check": "tslint-config-prettier-check ./tslint.json"
   },
   "devDependencies": {
     "clean-webpack-plugin": "^1.0.1",
@@ -17,6 +18,8 @@
     "webpack-dev-server": "^3.1.14"
   },
   "dependencies": {
-    "lit-html": "^1.0.0"
+    "lit-html": "^1.0.0",
+    "vue": "^2.6.6",
+    "vuex": "^3.1.0"
   }
 }
