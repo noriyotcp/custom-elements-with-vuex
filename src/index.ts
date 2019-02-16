@@ -1,2 +1,6 @@
-const greet = (message = "World") => console.log(`Hello ${message}!`);
-greet("Boilerplate");
+import { counter } from "./counter";
+
+[].forEach.call(
+  document.querySelectorAll<HTMLElement>(".counter"),
+  (element: HTMLElement) => counter(element, 0)
+);

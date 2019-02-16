@@ -1,36 +1,36 @@
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const CleanWebpackPlugin = require('clean-webpack-plugin')
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const CleanWebpackPlugin = require("clean-webpack-plugin");
 
 module.exports = (_, argv) => {
-  const isProd = argv.mode === 'production'
+  const isProd = argv.mode === "production";
 
   return {
-    entry: './src/index.ts',
+    entry: "./src/index.ts",
 
     output: {
-      filename: '[name].[contenthash].js'
+      filename: "[name].[contenthash].js"
     },
 
-    mode: isProd ? 'production' : 'development',
+    mode: isProd ? "production" : "development",
 
-    devtool: isProd ? 'source-map' : 'inline-source-map',
+    devtool: isProd ? "source-map" : "inline-source-map",
 
     resolve: {
-      extensions: ['.ts', '.js']
+      extensions: [".ts", ".js"]
     },
 
     module: {
       rules: [{
         test: /\.ts$/,
-        loader: 'ts-loader'
+        loader: "ts-loader"
       }]
     },
 
     plugins: [
       new HtmlWebpackPlugin({
-        template: 'src/index.html'
+        template: "src/index.html"
       }),
-      new CleanWebpackPlugin('dist')
+      new CleanWebpackPlugin("dist")
     ]
-  }
-}
+  };
+};
