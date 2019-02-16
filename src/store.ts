@@ -1,20 +1,37 @@
 import Vue from "vue";
-import Vuex from "vuex";
+import Vuex, { ActionTree, GetterTree, MutationTree, StoreOptions } from "vuex";
 
 Vue.use(Vuex);
 
-export const store = new Vuex.Store({
-  state: { total: 0 },
-  mutations: {
-    increment(state) {
-      state.total++;
-    },
-    decrement(state) {
-      state.total--;
-    }
+const state: State = {
+  total: 0
+};
+
+const mutations: MutationTree<State> = {
+  increment(state: State): void {
+    state.total++;
   },
-  actions: {
-    increment: ({ commit }) => commit("increment"),
-    decrement: ({ commit }) => commit("decrement")
+  decrement(state: State): void {
+    state.total--;
   }
-});
+};
+
+const actions: ActionTree<State, State> = {
+  increment: ({ commit }) => commit("increment"),
+  decrement: ({ commit }) => commit("decrement")
+};
+
+const getters: GetterTree<State, State> = {
+  getTotal(state: State) {
+    return state.total;
+  }
+};
+
+const store: StoreOptions<State> = {
+  actions,
+  getters,
+  mutations,
+  state
+};
+
+export default new Vuex.Store<State>(store);

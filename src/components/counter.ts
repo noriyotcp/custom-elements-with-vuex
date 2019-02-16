@@ -1,28 +1,46 @@
 import { html, render } from "lit-html";
-import { store } from "../store";
+import store from "../store";
 
-export function counter(mount: HTMLElement, count: number) {
-  const template = html`
-    <p>${count}</p>
+class Counter extends HTMLElement {
+  private count = 0;
 
-    <button
-      @click=${() => {
-        counter(mount, count + 1);
-        store.commit("increment");
-      }}
-    >
-      +
-    </button>
+  constructor() {
+    super();
+    this.attachShadow({ mode: "open" });
+  }
 
-    <button
-      @click=${() => {
-        counter(mount, count - 1);
-        store.commit("decrement");
-      }}
-    >
-      -
-    </button>
-  `;
+  public connectedCallback() {
+    this.render();
+  }
 
-  render(template, mount);
+  private render() {
+    render(
+      html`
+        <p>${this.count}</p>
+
+        <button
+          @click=${() => {
+            this.count++;
+            store.commit("increment");
+            this.render();
+          }}
+        >
+          +
+        </button>
+
+        <button
+          @click=${() => {
+            this.count--;
+            store.commit("decrement");
+            this.render();
+          }}
+        >
+          -
+        </button>
+      `,
+      this.shadowRoot!
+    );
+  }
 }
+
+customElements.define("lit-counter", Counter);
