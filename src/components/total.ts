@@ -2,7 +2,7 @@ import { html, render } from "lit-html";
 import store from "../store";
 
 class Total extends HTMLElement {
-  private count = 0;
+  private count: number = 0;
   private storeUnsubscribe!: () => void;
 
   constructor() {
@@ -31,7 +31,7 @@ class Total extends HTMLElement {
   }
 
   private stateChanged() {
-    const count = store.getters.getTotal;
+    const count: State["total"] = store.getters.getTotal;
     if (this.count !== count) {
       this.count = count;
       this.render();

@@ -8,10 +8,10 @@ const state: State = {
 };
 
 const mutations: MutationTree<State> = {
-  increment(state: State): void {
+  increment(): void {
     state.total++;
   },
-  decrement(state: State): void {
+  decrement(): void {
     state.total--;
   }
 };
@@ -22,7 +22,7 @@ const actions: ActionTree<State, State> = {
 };
 
 const getters: GetterTree<State, State> = {
-  getTotal(state: State) {
+  getTotal(): State["total"] {
     return state.total;
   }
 };

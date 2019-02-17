@@ -2,7 +2,7 @@ import { html, render } from "lit-html";
 import store from "../store";
 
 class Counter extends HTMLElement {
-  private count = 0;
+  private count: number = 0;
 
   constructor() {
     super();
