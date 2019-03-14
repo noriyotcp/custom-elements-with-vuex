@@ -30,7 +30,7 @@ module.exports = (_, argv) => {
       new HtmlWebpackPlugin({
         template: "src/index.html"
       }),
-      new CleanWebpackPlugin("dist")
+      new CleanWebpackPlugin()
     ]
   };
 };

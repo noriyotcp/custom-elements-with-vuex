@@ -6,7 +6,7 @@
     "tslint-check": "tslint-config-prettier-check ./tslint.json"
   },
   "devDependencies": {
-    "clean-webpack-plugin": "^1.0.1",
+    "clean-webpack-plugin": "^2.0.0",
     "html-webpack-plugin": "^3.2.0",
     "prettier": "^1.16.4",
     "ts-loader": "^5.3.3",
