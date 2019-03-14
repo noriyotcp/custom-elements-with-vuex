@@ -21,7 +21,7 @@ class Counter extends HTMLElement {
         <button
           @click=${() => {
             this.count++;
-            store.commit("increment");
+            store.dispatch("increment");
             this.render();
           }}
         >
@@ -31,7 +31,7 @@ class Counter extends HTMLElement {
         <button
           @click=${() => {
             this.count--;
-            store.commit("decrement");
+            store.dispatch("decrement");
             this.render();
           }}
         >
